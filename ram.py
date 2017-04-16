@@ -12,7 +12,7 @@ def home():
 
 @app.route('/memory')
 def memory():
-    return "routes: /total /available /percent /used /free"
+    return json.dumps(psutil.phymem_usage())
 
 @app.route('/memory/total')
 def total_memory():
@@ -24,7 +24,6 @@ def available_memory():
 
 @app.route('/memory/percent')
 def percent_memory():
-    print psutil.phymem_usage()
     return json.dumps(psutil.phymem_usage()[2])
 
 @app.route('/memory/used')
